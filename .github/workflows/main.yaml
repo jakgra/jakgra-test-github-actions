@@ -19,6 +19,7 @@ jobs:
 
   print-test-2:
     needs: [print-test-1, print-test-1-5]
+    if: '!cancelled()'
     runs-on: ubuntu-latest
     steps:
       - name: Echo something 2
