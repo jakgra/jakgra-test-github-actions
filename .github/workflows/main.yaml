@@ -11,7 +11,7 @@ jobs:
         run: echo "neki 1"
 
   print-test-1-5:
-    if: startsWith(github.ref, 'refs/tags/v') != true
+    if: startsWith(github.ref, 'refs/tags/v') == true
     runs-on: ubuntu-latest
     steps:
       - name: Echo something
