@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: Echo something
         run: |
-          echo matrix=[{"tests": ["something", "out", "neki"], "cameras": ["something 2", "out", "neki 2"]}] >> $GITHUB_OUTPUT
+          echo "matrix={\"include\":[{\"project\":\"foo\",\"config\":\"Debug\"},{\"project\":\"bar\",\"config\":\"Release\"}]}" >> $GITHUB_OUTPUT
   second_step:
     runs-on: ubuntu-latest
     needs: [some_calc_value]
