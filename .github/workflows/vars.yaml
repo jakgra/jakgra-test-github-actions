@@ -7,6 +7,7 @@ jobs:
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
+      - uses: actions/checkout@v2
       - id: set-matrix
         run: python nek.py >> $GITHUB_OUTPUT
   job2:
