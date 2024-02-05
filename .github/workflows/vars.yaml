@@ -3,15 +3,15 @@ name: Vars Test
 on: push
 
 jobs:
-  some-calc-value:
+  some_calc_value:
     runs-on: ubuntu-latest
     steps:
       - name: Echo something
         run: |
           echo matrix=[{"test": "something", "out": "neki"}, {"test": "something 2", "out": "neki 2"}] >> $GITHUB_OUTPUT
-  second-step:
+  second_step:
     runs-on: ubuntu-latest
-    needs: [some-calc-value]
+    needs: [some_calc_value]
     strategy:
       matrix: ${{fromJson(needs.some_calc_value.outputs.matrix)}}
     steps:
