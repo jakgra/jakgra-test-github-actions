@@ -17,5 +17,5 @@ jobs:
     steps:
       - name: Something
         run: |
-        echo ${{matrix.camera}} ${{matrix.run}}
+          echo ${{matrix.camera}} ${{matrix.run}}
 
