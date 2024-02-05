@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Echo something
         run: |
-          echo "matrix=\"[{\\\"camera\\\": \\\"nek nek\\\", \\\"run\\\": \\\"echo neki iz din\\\"}]\"" >> $GITHUB_OUTPUT
+          echo matrix=$(python3 nek.py) >> $GITHUB_OUTPUT
 
   print-test-1:
     runs-on: ubuntu-latest
