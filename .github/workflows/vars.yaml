@@ -1,19 +1,17 @@
-name: Test Workflow
+name: Vars Test
 
 on: push
 
 jobs:
-
-  some_calc_value:
+  some-calc-value:
     runs-on: ubuntu-latest
     steps:
       - name: Echo something
         run: |
           echo matrix=[{"test": "something", "out": "neki"}, {"test": "something 2", "out": "neki 2"}] >> $GITHUB_OUTPUT
-
-  print-test-1:
+  second-step:
     runs-on: ubuntu-latest
-    needs: [some_calc_value]
+    needs: [some-calc-value]
     strategy:
       matrix: ${{fromJson(needs.some_calc_value.outputs.matrix)}}
     steps:
