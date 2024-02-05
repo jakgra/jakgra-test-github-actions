@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Echo something
         run: |
-          echo matrix=$(python3 nek.py) >> $GITHUB_OUTPUT
+          echo matrix=[{"test": "something", "out": "neki"}, {"test": "something 2", "out": "neki 2"}] >> $GITHUB_OUTPUT
 
   print-test-1:
     runs-on: ubuntu-latest
