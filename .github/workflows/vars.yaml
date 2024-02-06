@@ -18,5 +18,6 @@ jobs:
     steps:
       - name: Something
         run: |
-          echo ${{matrix.camera}} ${{matrix.run}}
+          export CONFIG_Debug=Nekajjj-conf
+          echo ${{matrix.project}} ${{matrix.config}} $CONFIG_${{matrix.config}}
 
