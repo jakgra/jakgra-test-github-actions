@@ -1,6 +1,7 @@
 name: Test Workflow
 
-on: push
+# TODO maybe enable this when testing
+#on: push
 
 jobs:
 
