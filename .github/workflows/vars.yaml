@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - id: set-matrix
-        run: python nek.py >> $GITHUB_OUTPUT
+        run: echo matrix=$(python nek.py) >> $GITHUB_OUTPUT
   job2:
     needs: job1
     runs-on: ubuntu-latest
