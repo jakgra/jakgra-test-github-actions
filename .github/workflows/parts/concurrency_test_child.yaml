@@ -1,0 +1,27 @@
+name: Without Name
+
+concurrency: one_child_running
+#on: push
+on: workflow_call
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v2
+      - id: set-matrix
+        run: echo matrix=$(python nek.py) >> $GITHUB_OUTPUT
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: ${{ fromJSON(needs.job1.outputs.matrix) }}
+    steps:
+      - name: Something
+        run: |
+          sleep 45
+          export CONFIG_Debug=Nekajjj-conf
+          echo ${{matrix.project}} ${{matrix.config}} $CONFIG_${{matrix.config}}
+
