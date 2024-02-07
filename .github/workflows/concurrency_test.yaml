@@ -15,5 +15,5 @@ jobs:
         run: echo matrix=$(python nek.py) >> $GITHUB_OUTPUT
   call-workflow-2-in-local-repo:
     needs: job1
-    uses: ./.github/workflows/concurrency_test_child.yaml
+    uses: ./.github/workflows/parts/concurrency_test_child.yaml
 
