@@ -1,7 +1,8 @@
-name: Vars Test
+name: Concurrency Child
 
-# TODO maybe enable this when testing
+concurrency: only_one_child_running
 #on: push
+on: workflow_call
 
 jobs:
   job1:
@@ -20,6 +21,7 @@ jobs:
     steps:
       - name: Something
         run: |
+          sleep 5
           export CONFIG_Debug=Nekajjj-conf
           echo ${{matrix.project}} ${{matrix.config}} $CONFIG_${{matrix.config}}
 

@@ -1,4 +1,4 @@
-name: Vars Test
+name: Concurrency Parent
 
 # TODO maybe enable this when testing
 #on: push
@@ -12,14 +12,7 @@ jobs:
       - uses: actions/checkout@v2
       - id: set-matrix
         run: echo matrix=$(python nek.py) >> $GITHUB_OUTPUT
-  job2:
+  call-workflow-2-in-local-repo:
     needs: job1
-    runs-on: ubuntu-latest
-    strategy:
-      matrix: ${{ fromJSON(needs.job1.outputs.matrix) }}
-    steps:
-      - name: Something
-        run: |
-          export CONFIG_Debug=Nekajjj-conf
-          echo ${{matrix.project}} ${{matrix.config}} $CONFIG_${{matrix.config}}
+    uses: ./.github/workflows/concurrency_test_child.yml
 
