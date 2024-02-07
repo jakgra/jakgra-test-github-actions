@@ -1,7 +1,7 @@
 name: Concurrency Parent
 
 # TODO maybe enable this when testing
-#on: push
+on: push
 
 jobs:
   job1:
