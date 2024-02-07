@@ -21,7 +21,7 @@ jobs:
     steps:
       - name: Something
         run: |
-          sleep 5
+          sleep 45
           export CONFIG_Debug=Nekajjj-conf
           echo ${{matrix.project}} ${{matrix.config}} $CONFIG_${{matrix.config}}
 
