@@ -1,0 +1,40 @@
+name: Env Vars Test
+
+on: push
+
+jobs:
+
+  check_juhu:
+    runs-on: ubuntu-latest
+    outputs:
+      is_juhu: ${{ steps.set-juhu.outputs.matrix }}
+      is_juhu2: ${{ steps.set-juhu2.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v2
+      - id: set-juhu
+        # run: echo "neki 1"
+        run: |
+          source nek.sh
+          echo is_juhu=$JUHU_JUHU >> $GITHUB_OUTPUT
+      - id: set-juhu2
+        # run: echo "neki 1"
+        run: |
+          source nek2.sh
+          echo is_juhu2=$JUHU_JUHU >> $GITHUB_OUTPUT
+
+  print-test-1-5:
+    needs: [check_juhu]
+    if: needs.check_juhu.outputs.is_juhu == 1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo something
+        run: echo "IS JUHU"
+
+  print-test-2:
+    needs: [check_juhu2]
+    if: needs.check_juhu2.outputs.is_juhu2 == 0
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo something 2
+        run: echo "NOT JUHU"
+
