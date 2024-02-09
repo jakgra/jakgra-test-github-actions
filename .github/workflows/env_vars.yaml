@@ -7,8 +7,8 @@ jobs:
   check_juhu:
     runs-on: ubuntu-latest
     outputs:
-      is_juhu: ${{ steps.set-juhu.outputs.matrix }}
-      is_juhu2: ${{ steps.set-juhu2.outputs.matrix }}
+      is_juhu: ${{ steps.set-juhu.outputs.is_juhu }}
+      is_juhu2: ${{ steps.set-juhu2.outputs.is_juhu2 }}
     steps:
       - uses: actions/checkout@v2
       - id: set-juhu
