@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Echo something
-        run: echo ${{ needs.check_juhu2 }} --- ${{ needs.check_juhu2 }}
+        run: echo ${{ needs.check_juhu.outputs.is_juhu }} --- ${{ needs.check_juhu.outputs.is_juhu2 }}
 
 
   print-test-1-5:
@@ -40,7 +40,7 @@ jobs:
 
   print-test-2:
     needs: [check_juhu, print-test-1-5]
-    if: ${{ needs.check_juhu2.outputs.is_juhu == '0' }}
+    if: ${{ needs.check_juhu.outputs.is_juhu2 == '0' }}
     runs-on: ubuntu-latest
     steps:
       - name: Echo something 2
