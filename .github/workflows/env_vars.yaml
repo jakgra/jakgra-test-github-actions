@@ -23,7 +23,7 @@ jobs:
           echo is_juhu2=$JUHU_JUHU >> $GITHUB_OUTPUT
 
   print_variables:
-    needs: [check_juhu, check_juhu2]
+    needs: [check_juhu]
     runs-on: ubuntu-latest
     steps:
       - name: Echo something
