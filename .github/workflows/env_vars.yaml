@@ -31,7 +31,7 @@ jobs:
         run: echo "IS JUHU"
 
   print-test-2:
-    needs: [check_juhu2]
+    needs: [check_juhu, print-test-1-5]
     if: needs.check_juhu2.outputs.is_juhu2 == 0
     runs-on: ubuntu-latest
     steps:
