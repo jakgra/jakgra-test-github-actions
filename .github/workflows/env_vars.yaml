@@ -22,6 +22,14 @@ jobs:
           source nek2.sh
           echo is_juhu2=$JUHU_JUHU >> $GITHUB_OUTPUT
 
+  print_variables:
+    needs: [check_juhu, check_juhu2]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo something
+        run: echo ${{ needs.check_juhu2 }} --- ${{ needs.check_juhu2 }}
+
+
   print-test-1-5:
     needs: [check_juhu]
     if: ${{ needs.check_juhu.outputs.is_juhu == '1' }}
