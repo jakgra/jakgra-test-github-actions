@@ -34,7 +34,7 @@ jobs:
 
   print-test-1-5:
     needs: [check_juhu]
-    if: ${{ !canceled && needs.check_juhu.outputs.is_juhu == 1 }}
+    if: ${{ !canceled() && needs.check_juhu.outputs.is_juhu == 1 }}
     runs-on: ubuntu-latest
     steps:
       - name: Echo something
@@ -42,7 +42,7 @@ jobs:
 
   print-test-2:
     needs: [check_juhu, print-test-1-5]
-    if: ${{ !canceled && needs.check_juhu.outputs.is_juhu == 0 }}
+    if: ${{ !canceled() && needs.check_juhu.outputs.is_juhu == 0 }}
     runs-on: ubuntu-latest
     steps:
       - name: Echo something 2
