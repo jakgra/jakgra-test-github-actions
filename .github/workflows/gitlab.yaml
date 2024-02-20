@@ -15,5 +15,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Echo something
-        run: echo "neki 1" ${inputs.commit}
+        run: echo "neki 1" ${{ github.event.inputs.commit }}
 
