@@ -1,0 +1,19 @@
+name: Test Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit:
+        description: 'commit to run tests against'
+        required: true
+        type: string
+
+
+
+jobs:
+  print-test-1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo something
+        run: echo "neki 1" ${inputs.commit}
+
