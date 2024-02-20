@@ -3,6 +3,10 @@ name: Test Workflow
 on:
   workflow_dispatch:
     inputs:
+      custom_connection_id:
+        description: 'needed for status return to custom connection'
+        required: true
+        type: string
       commit:
         description: 'commit to run tests against'
         required: true
@@ -14,15 +18,13 @@ on:
         description: 'parent job id'
         type: number
 
-
-
-
 jobs:
   print-test-1:
     runs-on: ubuntu-latest
     steps:
-      - name: Echo something
+      - name: custom_connection_id_${{ github.event.inputs.custom_connection_id }}
         run: |
+          echo custom_connection_id_${{ github.event.inputs.custom_connection_id }}
           echo "neki 1" ${{ github.event.inputs.commit }}
           echo "JOB ID" ${{ github.event.inputs.ci_job_id }}
           echo "JOB URL" ${{ github.event.inputs.ci_job_url }}
