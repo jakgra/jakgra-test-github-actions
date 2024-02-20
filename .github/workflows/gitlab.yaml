@@ -22,8 +22,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Echo something
-        run:
-          - echo "neki 1" ${{ github.event.inputs.commit }}
-          - echo "JOB ID" ${{ github.event.inputs.ci_job_id }}
-          - echo "JOB URL" ${{ github.event.inputs.ci_job_url }}
+        run: |
+          echo "neki 1" ${{ github.event.inputs.commit }}
+          echo "JOB ID" ${{ github.event.inputs.ci_job_id }}
+          echo "JOB URL" ${{ github.event.inputs.ci_job_url }}
 
