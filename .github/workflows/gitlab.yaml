@@ -35,7 +35,7 @@ jobs:
     steps:
       - name: test-2
         run: |
-          sleep 100
+          sleep 40
           echo test 2
 
   print-test-3:
@@ -43,7 +43,5 @@ jobs:
     needs: [print-test-2]
     steps:
       - name: test-3
-        run: |
-          echo test 3
-          exit 3
+        run: if test $((RANDOM % 2)) -eq 1; then exit 1; else exit 0; fi
 
