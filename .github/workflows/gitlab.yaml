@@ -34,12 +34,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: test-2
-        run: echo test 2
+        run: |
+          sleep 100
+          echo test 2
 
   print-test-3:
     runs-on: ubuntu-latest
     needs: [print-test-2]
     steps:
       - name: test-3
-        run: echo test 3
+        run: |
+          echo test 3
+          exit 3
 
